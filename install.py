@@ -5,6 +5,7 @@ import pkg_resources
 from tqdm import tqdm
 import urllib.request
 from packaging import version as pv
+from typing import Optional
 
 try:
     from modules.paths_internal import models_path
@@ -46,7 +47,7 @@ def pip_uninstall(*args):
     subprocess.run([sys.executable, "-m", "pip", "uninstall", "-y", *args])
 
 def is_installed (
-        package: str, version: str | None = None, strict: bool = True
+        package: str, version: Optional[str] = None, strict: bool = True
 ):
     has_package = None
     try:
